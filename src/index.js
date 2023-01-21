@@ -13,10 +13,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // );
 let counter = 0;
 function show() {
-  counter++;
   const el = <p>{counter}</p>;
+  counter++;
   root.render(
-    el
+    <React.StrictMode>
+      <h1>Hello, React!</h1>
+      {el}
+   </React.StrictMode>
   );
 }
 
