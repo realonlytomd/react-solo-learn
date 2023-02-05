@@ -25,8 +25,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // }
 
 //setInterval(show, 1000);
-function Hello() {
-  return <h1>Hello world.</h1>;
+class Hello extends React.Component {
+  render() {
+    return <h1>Hello world.</h1>;
+  }
 }
 const el = <Hello />
 root.render(
