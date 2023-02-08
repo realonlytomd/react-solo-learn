@@ -26,18 +26,28 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //setInterval(show, 1000);
 
 // function component with props
-function Item(props) {
-  return <div className="item">
-    <b>Name:</b> {props.name} <br />
-    <b>Price:</b> {props.price}
-  </div>;
-}
-// class component
-// class Hello extends React.Component {
-//   render() {
-//     return <p>Hello, {this.props.name}!</p>;
-//   }
+// function Item(props) {
+//   return <div className="item">
+//     <b>Name:</b> {props.name} <br />
+//     <b>Price:</b> {props.price}
+//   </div>;
 // }
+// class component
+class Counter extends React.Component {
+  state = {
+    counter: 0
+  }
+  increment = () => {
+    this.setState({counter: this.state.counter+1});
+  }
+  render() {
+    return <div>
+      <p>{this.state.counter}</p>
+      <button onClick={this.increment}
+      >Increment</button>
+      </div>;
+  }
+}
 // function App() {
 //   return <div>
 //     <Hello name="David" />
@@ -45,14 +55,14 @@ function Item(props) {
 //     <Hello name="Amy" />
 //   </div>;
 // }
-function App() {
-  return <div>
-    <Item name="Cheese" price="4.99" />
-    <Item name="Bread" price="1.50" />
-    <Item name="Ice cream" price="24.00" />
-  </div>
-}
-const el = <App />;
+// function App() {
+//   return <div>
+//     <Item name="Cheese" price="4.99" />
+//     <Item name="Bread" price="1.50" />
+//     <Item name="Ice cream" price="24.00" />
+//   </div>
+// }
+const el = <Counter />;
 root.render(
   <React.StrictMode>
     {el}
