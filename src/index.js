@@ -1,5 +1,5 @@
-// import React from 'react';
-import React, { useState } from 'react';
+//import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 //import App from './App';
@@ -37,6 +37,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 function Counter() {
   const [counter, setCounter] = useState(0);
 
+  useEffect(() => {
+    alert("Number of Clicks: " + counter);
+  }, [counter]);
+
   function increment() {
     setCounter(counter+1);
   }
@@ -55,6 +59,12 @@ function Counter() {
 //   }
 //   increment = () => {
 //     this.setState({counter: this.state.counter+1});
+//   }
+//   // componentDidMount() {
+//   //   this.setState({counter: 42});
+//   // }
+//   componentDidUpdate() {
+//     alert("Number of Clicks: " + this.state.counter);
 //   }
 //   render() {
 //     return <div>
