@@ -1,5 +1,5 @@
 //import React from 'react';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 //import App from './App';
@@ -33,25 +33,62 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //     <b>Price:</b> {props.price}
 //   </div>;
 // } 
-// function component using hooks, or, useSte
-function Counter() {
-  const [counter, setCounter] = useState(0);
+// function componet using change handlers with forms
+function AddForm() {
+  const [sum, setSum] = useState(0);
+  const [num, setNum] = useState(0);
 
-  useEffect(() => {
-    alert("Number of Clicks: " + counter);
-  }, [counter]);
-
-  function increment() {
-    setCounter(counter+1);
+  function handleChange(e) {
+    setNum(e.target.value);
   }
 
-  return <div>
-    <h1>{counter}</h1>
-    <button onClick={increment}>
-      Increment
-    </button>
-    </div>;
+  function handleSubmit(e) {
+    setSum(sum + Number(num));
+    e.preventDefault();
+  }
+
+  return <form onSubmit={handleSubmit}>
+    <input type="number" value={num} onChange={handleChange} />
+    <input type="submit" value="Add" />
+    <p> Sum is {sum} </p>
+  </form>;
 }
+// function component using useState and change handlers
+// function Converter() {
+//   const [km, setKm] = useState(0);
+
+//   function handleChange(e) {
+//     setKm(e.target.value);
+//   }
+//   function convert(km) {
+//     return (km/1.609).toFixed(2);
+//   }
+
+//   return <div>
+//     <input type="text" value={km} onChange={handleChange} />
+//     <p> {km} km is {convert(km)} miles </p>
+//   </div>;
+// }
+
+// function component using hooks, or, useSte
+// function Counter() {
+//   const [counter, setCounter] = useState(0);
+
+//   useEffect(() => {
+//     alert("Number of Clicks: " + counter);
+//   }, [counter]);
+
+//   function increment() {
+//     setCounter(counter+1);
+//   }
+
+//   return <div>
+//     <h1>{counter}</h1>
+//     <button onClick={increment}>
+//       Increment
+//     </button>
+//     </div>;
+// }
 // class component
 // class Counter extends React.Component {
 //   state = {
@@ -88,7 +125,7 @@ function Counter() {
 //     <Item name="Ice cream" price="24.00" />
 //   </div>
 // }
-const el = <Counter />;
+const el = <AddForm />;
 root.render(
   <React.StrictMode>
     {el}
