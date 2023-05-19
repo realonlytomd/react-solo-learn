@@ -56,9 +56,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //
 function MyList(props) {
   const arr = props.data;
-  const listItems = arr.map((val) =>
-    <li>{val}</li>
+  const listItems = arr.map((val, index) =>
+    <li key={index}>{val}</li>
   );
+  console.log("listItems: ", listItems);
   return <ul>{listItems}</ul>;
 }
 // function component using useState and change handlers
