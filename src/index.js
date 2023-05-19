@@ -34,24 +34,32 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //   </div>;
 // } 
 // function componet using change handlers with forms
-function AddForm() {
-  const [sum, setSum] = useState(0);
-  const [num, setNum] = useState(0);
+// function AddForm() {
+//   const [sum, setSum] = useState(0);
+//   const [num, setNum] = useState(0);
 
-  function handleChange(e) {
-    setNum(e.target.value);
-  }
+//   function handleChange(e) {
+//     setNum(e.target.value);
+//   }
 
-  function handleSubmit(e) {
-    setSum(sum + Number(num));
-    e.preventDefault();
-  }
+//   function handleSubmit(e) {
+//     setSum(sum + Number(num));
+//     e.preventDefault();
+//   }
 
-  return <form onSubmit={handleSubmit}>
-    <input type="number" value={num} onChange={handleChange} />
-    <input type="submit" value="Add" />
-    <p> Sum is {sum} </p>
-  </form>;
+//   return <form onSubmit={handleSubmit}>
+//     <input type="number" value={num} onChange={handleChange} />
+//     <input type="submit" value="Add" />
+//     <p> Sum is {sum} </p>
+//   </form>;
+// }
+//
+function MyList(props) {
+  const arr = props.data;
+  const listItems = arr.map((val) =>
+    <li>{val}</li>
+  );
+  return <ul>{listItems}</ul>;
 }
 // function component using useState and change handlers
 // function Converter() {
@@ -125,7 +133,8 @@ function AddForm() {
 //     <Item name="Ice cream" price="24.00" />
 //   </div>
 // }
-const el = <AddForm />;
+const arr = ["A", "B", "C"];
+const el = <MyList data={arr} />;
 root.render(
   <React.StrictMode>
     {el}
