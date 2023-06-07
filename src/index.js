@@ -69,8 +69,9 @@ function AddPersonForm(props) {
     e.preventDefault();
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text"
+    <form className="centerright" onSubmit={handleSubmit}>
+      <input 
+        type="text"
         placeholder="Add new contact"
         onChange={handleChange}
         value={person} />
@@ -95,7 +96,7 @@ function ContactManager(props) {
   }
   
   return (
-    <div>
+    <div> 
       <AddPersonForm handleSubmit={addPerson} />
       <PeopleList data={contacts} />
     </div>
