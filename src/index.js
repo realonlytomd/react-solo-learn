@@ -85,7 +85,8 @@ function PeopleList(props) {
   const listItems = arr.map((val, index) =>
    <li key={index}>{val}</li>
    );
-   return <ul>{listItems}</ul>;
+   console.log("listItems" , listItems);
+   return <ul className="centerright">{listItems}</ul>;
 }
 
 function ContactManager(props) {
