@@ -55,16 +55,23 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // }
 //
 function AddPersonForm(props) {
-  const [person, setPerson] = useState('');
+  const [person, setPerson] = useState("");
+  const [age, setAge] = useState("");
 
   function handleChange(e) {
     setPerson(e.target.value);
+  }
+
+  function handleChangeAge(e) {
+    setAge(e.target.value);
   }
   
   function handleSubmit(e) {
     if(person !== '') {
       props.handleSubmit(person);
+      props.handleSubmit(age);
       setPerson('');
+      setAge('');
     }
     e.preventDefault();
   }
@@ -75,6 +82,11 @@ function AddPersonForm(props) {
         placeholder="Add new contact"
         onChange={handleChange}
         value={person} />
+      <input
+        type="number"
+        placeholder="Add age"
+        onChange={handleChangeAge}
+        value={age} />
       <button type="submit">Add</button>
     </form>
   );
@@ -82,10 +94,10 @@ function AddPersonForm(props) {
 
 function PeopleList(props) {
   const arr = props.data;
+  console.log("props.data: ", props.data);
   const listItems = arr.map((val, index) =>
-   <li key={index}>{val}</li>
+   <li key={index}>{val.name}  {val.age}</li>
    );
-   console.log("listItems" , listItems);
    return <ul className="centerright">{listItems}</ul>;
 }
 
@@ -93,7 +105,7 @@ function ContactManager(props) {
   const [contacts, setContacts] = useState(props.data);
   
   function addPerson(name) {
-    setContacts([...contacts, name]);
+    setContacts([...contacts, ...name]);
   }
   
   return (
@@ -175,7 +187,10 @@ function ContactManager(props) {
 //     <Item name="Ice cream" price="24.00" />
 //   </div>
 // }
-const contacts = ["James Smith", "Thomas Anderson", "Bruce Wayne"];
+const contacts = [{name:"James Smith",
+                    age: 44}, 
+                    {name: "Thomas Anderson",
+                    age: 46}];
 const el = <ContactManager data={contacts} />;
 root.render(
   <React.StrictMode>
