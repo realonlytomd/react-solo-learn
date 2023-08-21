@@ -68,13 +68,13 @@ function AddPersonForm(props) {
   
   function handleSubmit(e) {
     if(person !== '') {
-      props.handleSubmit(person);
-      props.handleSubmit(age);
+      props.handleSubmit(person, age);
       setPerson('');
       setAge('');
     }
     e.preventDefault();
   }
+
   return (
     <form className="centerright" onSubmit={handleSubmit}>
       <input 
@@ -104,8 +104,10 @@ function PeopleList(props) {
 function ContactManager(props) {
   const [contacts, setContacts] = useState(props.data);
   
-  function addPerson(name) {
-    setContacts([...contacts, ...name]);
+  function addPerson(name, age) {
+    console.log("name in function addPerson: ", name);
+    console.log("age in function addPerson: ", age);
+    setContacts([...contacts, {name:name, age:parseInt(age)}]);
   }
   
   return (
