@@ -10,6 +10,4 @@ function PeopleList(props) {
      return <ul className="centerright">{listItems}</ul>;
 }
 
-
-
 export default PeopleList;
