@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import AddPersonForm from './AddPersonForm';
+import PeopleList from './PeopleList';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -54,60 +56,23 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //   </form>;
 // }
 //
-function AddPersonForm(props) {
-  const [person, setPerson] = useState("");
-  const [age, setAge] = useState("");
 
-  function handleChange(e) {
-    setPerson(e.target.value);
-  }
-
-  function handleChangeAge(e) {
-    setAge(e.target.value);
-  }
-  
-  function handleSubmit(e) {
-    if(person !== '') {
-      props.handleSubmit(person, age);
-      setPerson('');
-      setAge('');
-    }
-    e.preventDefault();
-  }
-
-  return (
-    <form className="centerright" onSubmit={handleSubmit}>
-      <input 
-        type="text"
-        placeholder="Add new contact"
-        onChange={handleChange}
-        value={person} />
-      <input
-        type="number"
-        placeholder="Add age"
-        onChange={handleChangeAge}
-        value={age} />
-      <button type="submit">Add</button>
-    </form>
-  );
-}
-
-function PeopleList(props) {
-  const arr = props.data;
-  console.log("props.data: ", props.data);
-  const listItems = arr.map((val, index) =>
-   <li key={index}>{val.name}  {val.age}</li>
-   );
-   return <ul className="centerright">{listItems}</ul>;
-}
+// function PeopleList(props) {
+//   const arr = props.data;
+//   console.log("arr: ", arr);
+//   const listItems = arr.map((val, index) =>
+//    <li key={index}>{val.name}  {val.age}</li>
+//    );
+//    return <ul className="centerright">{listItems}</ul>;
+// }
 
 function ContactManager(props) {
   const [contacts, setContacts] = useState(props.data);
   
-  function addPerson(name, age) {
-    console.log("name in function addPerson: ", name);
-    console.log("age in function addPerson: ", age);
-    setContacts([...contacts, {name:name, age:parseInt(age)}]);
+  function addPerson(person, old) {
+    console.log("person in function addPerson: ", person);
+    console.log("old in function addPerson: ", old);
+    setContacts([...contacts, {name:person, age:parseInt(old)}]);
   }
   
   return (
