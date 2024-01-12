@@ -15,7 +15,7 @@ function AddPersonForm(props) {
     
     function handleSubmit(e) {
       if(person !== '') {
-        props.handleSubmit(person, old);
+        props.handleSubmit(person, old); // this changes the variable, contacts, in the function ContactManager in index.js
         setPerson('');
         setAge('');
       }

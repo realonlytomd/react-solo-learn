@@ -7,7 +7,8 @@ function PeopleList(props) {
     const listItems = arr.map((val, index) =>
      <li key={index}>{val.name}  {val.age}</li>
      );
-     return <ul className="centerright">{listItems}</ul>;
+     console.log("listItems: ", listItems);
+     return <ol className="centerright">{listItems}</ol>;
 }
 
 
